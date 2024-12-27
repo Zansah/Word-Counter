@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #E8664C;
+    }
+    .box-container {
+      max-width: 600px;
+      width: 100%;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    textarea {
+      width: 96%;
+      height: 150px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .counter {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .counter span {
+      color: #7BF294;
+    }
+  </style>
+</head>
+<body>
+  <div class="box-container">
+    <h1>Word Counter</h1>
+    <textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+    <div class="counter">
+      <div>Words: <span id="wordCount">0</span></div>
+      <div>Characters: <span id="charCount">0</span></div>
+    </div>
+  </div>
+
+  <script>
+    const textInput = document.getElementById("textInput");
+    const wordCount = document.getElementById("wordCount");
+    const charCount = document.getElementById("charCount");
+
+    textInput.addEventListener("input", () => {
+      const text = textInput.value.trim();
+
+      const words = text.split(/\s+/).filter(word => word.length > 0);
+      wordCount.textContent = words.length;
+
+      charCount.textContent = text.length;
+    });
+  </script>
+</body>
+</html>
